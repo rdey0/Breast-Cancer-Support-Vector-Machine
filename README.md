@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +67,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+=======
+# breast-cancer-support-vector-machine
+An optimized SVM which is used to predict the presence of breast cancer based on cancer concavity data
+>>>>>>> d6dd5370fa57f133b77e856efa88be29f6f7a36c
