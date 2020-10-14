@@ -10,7 +10,7 @@ import time
 import statistics as stats
 
 
-def make_meshgrid(x, y,h=.02):
+def make_meshgrid(x, y, h=.02):
     
     """Create a mesh of points to plot in
 
@@ -46,8 +46,6 @@ def plot_contours(ax, clf, xx, yy, **params):
     out = ax.contourf(xx, yy, Z, **params)
     return out
 
-
-
 def optimize_rbf(x_train, x_test, y_train, y_test, max_degree, max_cost):
     # create a dictionary to store the optimal parameters
     runtimes = []
@@ -79,17 +77,73 @@ def optimize_rbf(x_train, x_test, y_train, y_test, max_degree, max_cost):
     #print("Optimal Degree:", best_degree_param, "Optimal Cost:", best_cost_param, "Accuracy:", max_accuracy)
     return best_degree_param, best_cost_param, max_accuracy, results
 
-def 
+def get_svm_accuracy(svm_model, x_test, y_test):
+    preds = svm_model.predict(x_test)
+    return accuracy_score(preds, y_test)
+
+
+"""
+# Create and train an RBF SVM model
+#
+# @x_train: x training data
+# @y_train: y training data
+# @degree: An integer which represents the degree parameter of the SVM
+# @cost: An integer which represents the cost parameter of the sVM
+#
+# Return: The svm model
+"""
+def create_model(x_train, y_train, degree, cost):
+    # create rbf model
+    clf = svm.SVC(kernel='rbf', degree = degree, C=cost)
+    rbf_model = clf.fit(x_train, np.ravel(y_train))
+    return rbf_model
+
+"""
+# Update the svm model using the new parameters
+#
+# @x1_label: A string which represents the label name of a feature
+# @x2_label: A string which represents the label name of a feature
+# @degree: An integer which represents the degree parameter of the SVM
+# @cost: An integer which represents the cost parameter of the sVM
+#
+# Return: The percent accuracy of the updated svm model
+"""
+def update_graph(x1_label, x2_label, degree, cost):
+    # Get data corresponding to given labels
+    X = cancer.loc[:,[x1_label, x2_label]]
+    # Split data into test and training sets
+    x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.7)
+    svm = create_model(x_train, y_train, degree, cost)
+    # Create plot
+    fig, ax = plt.subplots(1, 1)
+    xx, yy = make_meshgrid(X.iloc[:,0], X.iloc[:,1])
+    plot_contours(ax, svm, xx, yy, cmap=plt.cm.coolwarm, alpha=0.8)
+    ax.scatter(yes_cancer.loc[:,[x1_label]], yes_cancer.loc[:,[x2_label]], 
+        label="Cancer Positive", color="blue", edgecolors='k')
+    ax.scatter(no_cancer.loc[:,[x1_label]], no_cancer.loc[:,[x2_label]], 
+        label="Cancer Negative", color="red", edgecolors='k')
+    ax.set_xlim(-0.15, 0.35)
+    ax.set_ylim(-0.15, 0.55)
+    ax.set_xlabel(x1_label)
+    ax.set_ylabel(x2_label)
+    ax.legend(loc="upper right")
+    # Save the plot as an image
+    plt.savefig('../graph_img/graph.jpg')
+    return get_svm_accuracy(svm, x_test, y_test)
+
+
 # load cancer dataset
 cancer = datasets.load_breast_cancer()
 # convert cancer dataset to dataframe
 data = np.c_[cancer.data, cancer.target]
 columns = np.append(cancer.feature_names, ["target"])
 cancer = pd.DataFrame(data, columns=columns)
-# separate X and Y datasets
-#X = cancer.iloc[:,0:30]
+yes_cancer = cancer.loc[cancer['target'] == 0.0]
+no_cancer = cancer.loc[cancer['target'] == 1.0]
 X = cancer.loc[:,['mean concave points', 'worst concave points']]
 Y = cancer.iloc[:,30:31]
+
+"""
 # split data into test and training sets
 x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.7)
 # find the most optimal degree and cost parameters
@@ -113,6 +167,25 @@ titles = ('(1st Best RBF SVM) Degree=' + str(results_max.iloc[0,0]) +
             ' and Cost=' + str(results_max.iloc[2,1]),
         '(Worst RBF SVM) Degree=' + str(results_sorted.iloc[0,0]) +
             ' and Cost=' + str(results_sorted.iloc[0,1]))
+fig, sub = plt.subplots(1, 1)
+xx, yy = make_meshgrid(X.iloc[:,0], X.iloc[:,1])
+ax = sub
+model = svm.SVC(kernel='rbf', degree = results_max.iloc[0,1], C=results_max.iloc[0,1])
+clf = model.fit(x_train, np.ravel(y_train))
+title = 'Test'
+plot_contours(ax, clf, xx, yy, cmap=plt.cm.coolwarm, alpha=0.8)
+ax.scatter(yes_cancer.loc[:,['mean concave points']], yes_cancer.loc[:,['worst concave points']], 
+    label="Cancer Positive", color="blue", edgecolors='k')
+ax.scatter(no_cancer.loc[:,['mean concave points']], no_cancer.loc[:,['worst concave points']], 
+    label="Cancer Negative", color="red", edgecolors='k')
+ax.set_xlim(-0.15, 0.35)
+ax.set_ylim(-0.15, 0.55)
+ax.set_xlabel('Mean Concave Points')
+ax.set_ylabel('Worst Concave Points')
+ax.set_title(title)
+ax.legend(loc="upper right")
+plt.savefig('../graph_img/graph.jpg')
+plt.show()
 
 # Set-up 2x2 grid for plotting.
 fig, sub = plt.subplots(2, 2)
@@ -140,3 +213,4 @@ for clf, title, ax in zip(models, titles, sub.flatten()):
     ax.set_title(title)
     ax.legend(loc="upper right")
 plt.show()
+"""
