@@ -26,13 +26,34 @@ html{
   font-size: 2em;
   color: white;
 }
-.slide-container {
-  padding: 3em;
-}
-.controls {
+
+.parameter-selectors {
   display: flex;
   justify-content: center;
 }
+
+.selector-container {
+  padding: 3em;
+  width: 17em;
+}
+
+.parameter-sliders {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.slide-container {
+  padding: 3em;
+  
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .slider {
   width: 20em;
 }
@@ -41,9 +62,16 @@ html{
 .slider:hover {
   opacity: 1; /* Fully shown on mouse-over */
 }
+
 .svm-display {
+  /*
   pointer-events: none;
   user-select: none;
+  */
+}
+
+.svm-display img{
+
 }
 
 .gui-container {

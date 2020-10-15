@@ -138,6 +138,7 @@ cancer = datasets.load_breast_cancer()
 data = np.c_[cancer.data, cancer.target]
 columns = np.append(cancer.feature_names, ["target"])
 cancer = pd.DataFrame(data, columns=columns)
+cancer.to_csv(r'../graph_img/cancer.csv')
 yes_cancer = cancer.loc[cancer['target'] == 0.0]
 no_cancer = cancer.loc[cancer['target'] == 1.0]
 X = cancer.loc[:,['mean concave points', 'worst concave points']]
