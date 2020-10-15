@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import graph_img from './graph_img/graph.jpg'
 import Select from './components/select_box.js'
-
+import Slider from './components/slider.js'
 
 
 class App extends React.Component {
@@ -33,12 +33,8 @@ class App extends React.Component {
               <Select variable_name='worst concavity'/>
             </div>
             <div className='parameter-sliders'>
-              <div className='slide-container'>
-                <input id="degree_slider" className="slider" type="range" min="1" max="10" defaultValue='1'/>
-              </div>
-              <div className='slide-container'>
-                <input id="cost_slider" className="slider" type="range" min="1" max="20" defaultValue='1'/>
-              </div>
+              <Slider id='degree-slider' min='1' max='5'/>
+              <Slider id='cost-slider' min={1} max={10}/>
             </div>
           </div>
         </div>
