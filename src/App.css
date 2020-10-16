@@ -1,0 +1,85 @@
+/* Fonts and Colors */
+html{
+  background-color: #282c34;
+}
+
+.App{
+  background-color: transparent;
+}
+
+.gui-container {
+  background-color: transparent;
+}
+
+/* Spacing and Size */
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.App-header {
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  color: white;
+}
+
+.parameter-selectors {
+  display: flex;
+  justify-content: center;
+}
+
+.selector-container {
+  padding: 3em;
+  width: 17em;
+}
+
+.parameter-sliders {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.slide-container {
+  padding: 3em;
+  
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slider {
+  width: 20em;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+.svm-display {
+  /*
+  pointer-events: none;
+  user-select: none;
+  */
+}
+
+.svm-display img{
+
+}
+
+.gui-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
