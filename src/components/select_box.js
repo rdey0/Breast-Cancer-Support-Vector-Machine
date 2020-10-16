@@ -6,9 +6,15 @@ export default class select_box extends React.Component {
         this.state = {value: props.variable_name};
         this.handleChange = this.handleChange.bind(this);
     }
+    
     handleChange(event){
-        this.setState({value: event.target.value});
+        var id = this.props.id;
+        var new_value = event.target.value;
+        this.setState({value: new_value}, ()=>{
+            this.props.onChange(id, new_value);
+        });
     }
+
     render() {
         return(
             <div className='selector-container'>

@@ -8,8 +8,11 @@ export default class slider extends React.Component {
     }
 
     handleChange(event){
-        console.log(event.target.value);
-        this.setState({value: event.target.value});
+        var id = this.props.id;
+        var new_value = event.target.value;
+        this.setState({value: new_value}, ()=>{
+            this.props.onChange(id, new_value);
+        });
     }
 
     render(){

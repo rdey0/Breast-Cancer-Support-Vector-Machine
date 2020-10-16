@@ -6,16 +6,16 @@ import Slider from './components/slider.js'
 
 
 class App extends React.Component {
+  state = {x_var: 'mean_concavity', y_var: 'worst_concavity', degree: '1', cost: '1'}
+
   
+
   render(){
-    const options = [
-      { value: 'mean concavity', label: 'Mean Concavity' },
-      { value: 'mean texture', label: 'Mean Texture' },
-      { value: 'mean area', label: 'Mean Area' },
-      { value: 'worst concavity', label: 'Worst Concavity' },
-      { value: 'worst texture', label: 'Worst Texture' },
-      { value: 'worst area', label: 'Worst Area' },
-    ]
+    const handle_field_change = (id, value) =>{
+      this.setState({[id]: value}, ()=>{
+        console.log('app state:',this.state);
+      });
+    }
     return (
       <div className="App">
 
@@ -29,12 +29,12 @@ class App extends React.Component {
           </div>
           <div className='controls'>
             <div className='parameter-selectors'>
-              <Select variable_name='mean concavity'/>
-              <Select variable_name='worst concavity'/>
+              <Select id='x_var' variable_name='mean concavity' onChange={handle_field_change}/>
+              <Select id='y_var' variable_name='worst concavity' onChange={handle_field_change}/>
             </div>
             <div className='parameter-sliders'>
-              <Slider id='degree-slider' min='1' max='5'/>
-              <Slider id='cost-slider' min={1} max={10}/>
+              <Slider id='degree' min='1' max='5' onChange={handle_field_change}/>
+              <Slider id='cost' min='1' max='10' onChange={handle_field_change}/>
             </div>
           </div>
         </div>
