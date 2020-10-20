@@ -42,9 +42,9 @@ def plot_contours(ax, clf, xx, yy, **params):
     yy: meshgrid ndarray
     params: dictionary of params to pass to contourf, optional
     """
-    start_time = time.time()
+
     Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
-    print('plot contour prediction time:', time.time() - start_time)
+
     Z = Z.reshape(xx.shape)
     out = ax.contourf(xx, yy, Z, **params)
     return out
@@ -70,6 +70,24 @@ def create_model(x_train, y_train, degree, cost):
     rbf_model = clf.fit(x_train, np.ravel(y_train))
     return rbf_model
 
+
+def set_axlims(series, marginfactor):
+    """
+    Fix for a scaling issue with matplotlibs scatterplot and small values.
+    Takes in a pandas series, and a marginfactor (float).
+    A marginfactor of 0.2 would for example set a 20% border distance on both sides.
+    Output:[bottom,top]
+    To be used with .set_ylim(bottom,top)
+    """
+    minv = series.min()
+    maxv = series.max()
+    datarange = maxv-minv
+    border = abs(datarange*marginfactor)
+    maxlim = maxv+border
+    minlim = minv-border
+
+    return minlim,maxlim
+
 """
 # Update the svm model using the new parameters
 #
@@ -83,30 +101,22 @@ def create_model(x_train, y_train, degree, cost):
 def get_graph(x1_label, x2_label, degree, cost):
     # Get data corresponding to given labels
     X = cancer.loc[:,[x1_label, x2_label]]
-    start_time = time.time()
     # Split data into test and training sets
-    x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.7)
-    print('split training and test data time:', time.time() - start_time)
-    start_time = time.time()
+    x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.4)
     svm = create_model(x_train, y_train, degree, cost)
-    print('create svm model time:', time.time() - start_time)
     # Create plot
-    start_time = time.time()
     fig, ax = plt.subplots(1, 1)
     xx, yy = make_meshgrid(X.iloc[:,0], X.iloc[:,1])
-    print('making meshgrid:', time.time() - start_time)
-    start_time = time.time()
     plot_contours(ax, svm, xx, yy, cmap=plt.cm.coolwarm, alpha=0.8)
-    print('getting plot contours:', time.time() - start_time)
-    start_time = time.time()
+
     ax.scatter(yes_cancer.loc[:,[x1_label]], yes_cancer.loc[:,[x2_label]], 
         label="Cancer Positive", color="blue", edgecolors='k')
     ax.scatter(no_cancer.loc[:,[x1_label]], no_cancer.loc[:,[x2_label]], 
         label="Cancer Negative", color="red", edgecolors='k')
-    print('plotting data points:', time.time() - start_time)
-    start_time = time.time()
-    ax.autoscale(enable=True, axis='both', tight=True)
-    print('autoscale axes:', time.time() - start_time)
+    xlim_min, xlim_max = set_axlims(cancer.loc[:,[x1_label]], 0.1)
+    ax.set_xlim(float(xlim_min), float(xlim_max))
+    ylim_min, ylim_max = set_axlims(cancer.loc[:,[x2_label]], 0.1)
+    ax.set_ylim(float(ylim_min), float(ylim_max))
     ax.set_xlabel(x1_label)
     ax.set_ylabel(x2_label)
     ax.legend(loc="upper right")
@@ -120,20 +130,17 @@ x2_label = sys.argv[2]
 degree = int(sys.argv[3])
 cost = int(sys.argv[4])
 
-start_time = time.time()
-
 # load cancer dataset
 cancer = pd.read_csv('./svm_scripts/cancer.csv')
-num_rows = len(cancer.index)
-num_delete = int(0.5 * num_rows)
-drop_indices = np.random.choice(cancer.index, num_delete, replace=False)
-cancer = cancer.drop(drop_indices)
+#num_rows = len(cancer.index)
+#num_delete = int(0.5 * num_rows)
+#drop_indices = np.random.choice(cancer.index, num_delete, replace=False)
+#cancer = cancer.drop(drop_indices)
 # separate rows into cancer positive and cancer negative dataframes
 yes_cancer = cancer.loc[cancer['target'] == 0.0]
 no_cancer = cancer.loc[cancer['target'] == 1.0]
 # get cancer result rows
 Y = cancer.iloc[:,30:31]
-print('loading data/setup time:', time.time() - start_time)
 # create an svm model with the given parameters and save the plot
 get_graph(x1_label, x2_label, degree, cost)
 sys.stdout.flush()

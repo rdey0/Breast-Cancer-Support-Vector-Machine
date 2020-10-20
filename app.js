@@ -3,10 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var graphRouter = require('./routes/graph');
+const {PythonShell} =require('python-shell'); 
 
 var app = express();
 
@@ -24,8 +24,10 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 //app.use('/graph', graphRouter);
 
-const {PythonShell} =require('python-shell'); 
+
 const get_graph = 'get_svm_plot.py';
+var model_accuracy = '0'
+
 app.post("/graph", (req, res, next)=>{ 
   var x1_label = req.body.x_var;
   var x2_label = req.body.y_var;
@@ -42,15 +44,7 @@ app.post("/graph", (req, res, next)=>{
           console.log(err);
       }
       console.log(results);
-      //res.json(results);
-      console.log(__dirname);
-      var options = {
-        headers: {
-          'accuracy': 'test'
-        }
-      }
-      res.header("Access-Control-Expose-Headers", "ETag");
-      res.header('accuracy','test');
+      model_accuracy = results[0]
       res.sendFile(__dirname + '/graph/graph.png', options, (err) =>{
         if(err)
           console.log(err);
@@ -59,6 +53,9 @@ app.post("/graph", (req, res, next)=>{
   });
 }); 
 
+app.get("/accuracy", (req, res)=>{ 
+  res.json({accuracy: model_accuracy});
+});
 
 
 // catch 404 and forward to error handler
