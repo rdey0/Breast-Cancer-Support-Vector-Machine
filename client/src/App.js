@@ -4,15 +4,13 @@ import graph_img from './graph_img/graph.png'
 import Select from './components/select_box.js'
 import Slider from './components/slider.js'
 
-
-
 class App extends React.Component {
   state = {
     plot_src: graph_img, 
     x_var: 'mean concavity', 
     y_var: 'worst concavity', 
     degree: '1', 
-    cost: '1',
+    cost: '5',
     model_accuracy: null
   }
 
@@ -32,7 +30,6 @@ class App extends React.Component {
     fetch('/accuracy', request_params)
       .then(res => res.json())
       .then(res => {
-        console.log('accuracy stuff',res);
         this.setState({model_accuracy: res.accuracy})
       })
   }
@@ -52,9 +49,7 @@ class App extends React.Component {
         return res.blob();
       })
       .then(res =>{
-        console.log('Response:', res);
-        var outside = URL.createObjectURL(res);
-        this.setState({plot_src: outside});
+        this.setState({plot_src: URL.createObjectURL(res)});
       })
       .catch(error => console.log('Error:', error));
   }
