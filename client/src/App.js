@@ -10,8 +10,8 @@ class App extends React.Component {
     x_var: 'mean concavity', 
     y_var: 'worst concavity', 
     degree: '1', 
-    cost: '5',
-    model_accuracy: null
+    cost: '1',
+    model_accuracy: 0
   }
 
   handle_field_change=(id, value)=>{
@@ -30,7 +30,9 @@ class App extends React.Component {
     fetch('/accuracy', request_params)
       .then(res => res.json())
       .then(res => {
-        this.setState({model_accuracy: res.accuracy})
+        var num_figures = 4;
+        var accuracy = (parseFloat(res.accuracy) * 100).toPrecision(num_figures);
+        this.setState({model_accuracy: accuracy});
       })
   }
 
@@ -65,9 +67,24 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header/>
+
         <div className='gui-container'>
           <div className='svm-display'>
             <img src={this.state.plot_src} alt='graph'/>
+            <div className='graph-info-container'>
+              <div className='info-item'>
+                <div className='control-label'> Model Accuracy</div>
+                <div className='metric'>{this.state.model_accuracy}%</div>
+              </div>
+              <div className='info-item'>
+                <div className='control-label'> Degree</div>
+                <div className='metric'>{this.state.degree}</div>
+              </div>
+              <div className='info-item'>
+                <div className='control-label'> Cost</div>
+                <div className='metric'>{this.state.cost}</div>
+              </div>
+            </div>
           </div>
           <div className='controls'>
             <Select label='X Variable' id='x_var' variable_name='mean concavity' onChange={this.handle_field_change}/>
@@ -76,11 +93,13 @@ class App extends React.Component {
             <Slider label='Cost' id='cost' min='1' max='10' onChange={this.handle_field_change}/>
             <div className='button-container'>
               <div className='update-graph' onClick={this.refresh_graph}>Graph</div>
+              <div className='update-graph' onClick={this.refresh_graph}>Optimize</div>
             </div>
           </div>
         </div>
       
       </div>
+
     );
   }
 }

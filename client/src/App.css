@@ -4,6 +4,7 @@
   /*--header: #2e4054;*/
   --accent: #546dfe;
   --accent-light: #5f76fc;
+  --accent-dark: #2546ff;
   --header:white;
   /*--accent: #1ab394;*/
 }
@@ -19,8 +20,7 @@ html{
 
 .App{
   height: 100%;
-  width: 100%;
-  background-color: transparent;
+  
 }
 
 .gui-container {
@@ -35,6 +35,8 @@ html{
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
+  background-color: transparent;
 }
 
 .App-header {
@@ -78,12 +80,11 @@ select {
 
 .selector-container {
   width: 100%;
-  margin: 1em 0;
+  margin: 1.5em 0;
 }
 
 .slide-container {
-  margin: 1em;
-  
+  margin: 1.5em 0.5em;
 }
 
 .slider::-webkit-slider-runnable-track {
@@ -158,19 +159,42 @@ select {
 }
 
 .svm-display {
-  height: 100%;
+  
 }
 
 .svm-display img{
-  height: 100%;
-  width: 100%;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  max-height: 480px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 200px;
+  padding: 0.5em 0;
+}
+
+.metric {
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--accent-dark);
+}
+
+.graph-info-container {
+  margin-top: 0.5em;
+  background-color: white;
+  border-radius: 10px;
+  width: 640px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
 }
 
 .gui-container {
-  height: 50%;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -179,16 +203,19 @@ select {
 
 .button-container {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .update-graph {
   color: var(--background);
   background-color: var(--accent);
   appearance: none;
-  padding: 0.8em;
+  padding: 0.7em;
   cursor: pointer;
-  width: 5em;
+  width: 6em;
   margin: 0 auto;
+  margin-top: 4em;
   border-radius: 5px;
 }
 
