@@ -70,16 +70,12 @@ class App extends React.Component {
             <img src={this.state.plot_src} alt='graph'/>
           </div>
           <div className='controls'>
-            <div className='parameter-selectors'>
-              <Select label='X Variable' id='x_var' variable_name='mean concavity' onChange={this.handle_field_change}/>
-              <Select label='Y Variable' id='y_var' variable_name='worst concavity' onChange={this.handle_field_change}/>
-            </div>
-            <div className='parameter-sliders'>
-              <Slider label='Degree' id='degree' min='1' max='5' onChange={this.handle_field_change}/>
-              <Slider label='Cost' id='cost' min='1' max='10' onChange={this.handle_field_change}/>
-            </div>
-            <div>
-              <button type='button' onClick={this.refresh_graph}>Generate Graph</button>
+            <Select label='X Variable' id='x_var' variable_name='mean concavity' onChange={this.handle_field_change}/>
+            <Select label='Y Variable' id='y_var' variable_name='worst concavity' onChange={this.handle_field_change}/>
+            <Slider label='Degree' id='degree' min='1' max='5' onChange={this.handle_field_change}/>
+            <Slider label='Cost' id='cost' min='1' max='10' onChange={this.handle_field_change}/>
+            <div className='button-container'>
+              <div className='update-graph' onClick={this.refresh_graph}>Graph</div>
             </div>
           </div>
         </div>

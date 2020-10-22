@@ -1,20 +1,31 @@
 /* Fonts and Colors */
 :root {
-  --background:gray;
-  --header: #2e4054;
-  --accent: #1ab394;
+  --background: #e4e8eb;
+  /*--header: #2e4054;*/
+  --accent: #546dfe;
+  --accent-light: #5f76fc;
+  --header:white;
+  /*--accent: #1ab394;*/
 }
 
+html, body, #root, .App {
+  height: 100%;
+}
 html{
   background-color: var(--background);
+  height: 100%;
 }
 
+
 .App{
+  height: 100%;
+  width: 100%;
   background-color: transparent;
 }
 
 .gui-container {
   background-color: transparent;
+  
 }
 
 /* Spacing and Size */
@@ -28,9 +39,11 @@ html{
 
 .App-header {
   display: flex;
-  color: white;
   background-color: var(--header);
-  margin-bottom: 2em;
+}
+
+.header-title {
+  background-color: var(--accent);
 }
 
 .header-item, .header-title {
@@ -51,65 +64,67 @@ html{
   font-weight: bold;
 }
 
-.parameter-selectors {
-  display: flex;
-  justify-content: center;
+select {
+  outline: none;
+  border: 0 solid black;
+  background-color: var(--background);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.selector{
+  width: 80%;
+  height: 3em;
 }
 
 .selector-container {
-  padding: 3em;
-  width: 17em;
-}
-
-.parameter-sliders {
-  display: flex;
-  justify-content: center;
-  
+  width: 100%;
+  margin: 1em 0;
 }
 
 .slide-container {
-  padding: 1em;
+  margin: 1em;
   
 }
+
 .slider::-webkit-slider-runnable-track {
   width: 100%;
   height: 1px;
   cursor: pointer;
   box-shadow: none;
-  background: #ffffff;
+  background: var(--background);
   border-radius: 0px;
-  border: 1px solid white;
+  border: 2px solid var(--background);
+  cursor: pointer;
 }
 .slider::-moz-range-track {
   width: 100%;
   height: 1px;
   cursor: pointer;
   box-shadow: none;
-  background: #ffffff;
+  background: var(--background);
   border-radius: 0px;
   border: 1px solid white;
 }
 .slider::-webkit-slider-thumb {
-  box-shadow: none;
-  border: 0px solid #ffffff;
-  box-shadow: 0px 10px 10px rgba(0,0,0,0.25);
-  height: 30px;
-  width: 17px;
-  border-radius: 22px;
-  background: rgba(255,255,255,1);
-  cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -15px;
+  box-shadow: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 25px;
+  width: 14px;
+  border-radius: 8px;
+  background: var(--accent);
+  cursor: pointer;
+  margin-top: -13px;
 }
 
 .slide::-moz-range-thumb {
   box-shadow: none;
-  border: 0px solid #ffffff;
-  box-shadow: 0px 10px 10px rgba(0,0,0,0.25);
+  border: 0px solid var(--accent);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   height: 30px;
   width: 17px;
   border-radius: 22px;
-  background: rgba(255,255,255,1);
+  background: var(--accent);
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -15px;
@@ -118,36 +133,67 @@ html{
   -webkit-appearance: none;
   appearance: none;
   outline: none;
-  width: 20em;
+  width: 90%;
 }
 
 .controls {
+  width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-content: center;
+  background-color: var(--header);
+  border-radius: 10px;
+  margin: 0 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+.control-label {
+  font-weight: bold;
+}
+
 /* Mouse-over effects */
 .slider:hover {
   opacity: 1; /* Fully shown on mouse-over */
 }
 
 .svm-display {
-  /*
-  pointer-events: none;
-  user-select: none;
-  */
+  height: 100%;
 }
 
 .svm-display img{
-
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .gui-container {
-  height: 100%;
+  height: 50%;
   width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-content: center;
+  margin: 10em 0;
+}
+
+.button-container {
+  width: 100%;
+}
+
+.update-graph {
+  color: var(--background);
+  background-color: var(--accent);
+  appearance: none;
+  padding: 0.8em;
+  cursor: pointer;
+  width: 5em;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.update-graph:hover {
+  background-color: var(--accent-light);
 }
 
 
