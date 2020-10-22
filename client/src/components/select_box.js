@@ -17,6 +17,7 @@ export default class select_box extends React.Component {
 
     render() {
         return(
+            
             <div className='selector-container'>
                 <select value={this.state.value} onChange={this.handleChange}>
                     <option value='mean concavity'>Mean Concavity</option>
@@ -27,6 +28,7 @@ export default class select_box extends React.Component {
                     <option value='worst compactness'>Worst Compactness</option>
                 </select>
             </div>
+            
         )
     }
 }

@@ -18,6 +18,7 @@ export default class slider extends React.Component {
     render(){
         return (
             <div className='slide-container'>
+                <div>{this.props.label}</div>
                 <input id={this.props.id} className="slider" type="range" min={this.props.min} max={this.props.max} 
                     value={this.state.value} onChange={this.handleChange}/>
             </div>
