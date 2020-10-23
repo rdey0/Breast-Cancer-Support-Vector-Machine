@@ -9,18 +9,14 @@
   /*--accent: #1ab394;*/
 }
 
-html, body, #root, .App {
-  height: 100%;
-}
+
 html{
   background-color: var(--background);
-  height: 100%;
 }
 
 
 .App{
-  height: 100%;
-  
+
 }
 
 .gui-container {
@@ -198,7 +194,7 @@ select {
   display: flex;
   justify-content: center;
   align-content: center;
-  margin: 10em 0;
+  margin: 5em 0;
 }
 
 .button-container {
