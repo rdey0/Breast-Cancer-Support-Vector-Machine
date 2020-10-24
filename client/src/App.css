@@ -154,14 +154,32 @@ select {
   opacity: 1; /* Fully shown on mouse-over */
 }
 
-.svm-display {
-  
+.plot {
+  position: relative;
 }
 
-.svm-display img{
+.loading-indicator{
+  position: absolute;
+  background-color: transparent;
+  left: 263px;
+  top: 183px;
+  z-index: 2;
+}
+
+.graph {
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   max-height: 480px;
+}
+
+.graph-overlay {
+  height: 480px;
+  width: 640px;
+  border-radius: 10px;
+  position: absolute;
+  z-index: 1;
+  background-color: var(--background);
+  opacity: 0.5;
 }
 
 .info-item {

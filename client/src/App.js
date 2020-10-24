@@ -4,6 +4,7 @@ import graph_img from './graph_img/graph.png'
 import Select from './components/select_box.js'
 import Slider from './components/slider.js'
 import Header from './components/header.js'
+import Plot from './components/graph_plot.js'
 class App extends React.Component {
   state = {
     plot_src: graph_img, 
@@ -11,7 +12,8 @@ class App extends React.Component {
     y_var: 'worst concavity', 
     degree: '1', 
     cost: '1',
-    model_accuracy: 0
+    model_accuracy: 0,
+    graph_loading: false
   }
 
   handle_field_change=(id, value)=>{
@@ -45,20 +47,21 @@ class App extends React.Component {
       body: JSON.stringify(this.state),
       redirect: 'follow'
     };
-
+    this.setState({graph_loading: true});
     fetch('/graph', request_params)
       .then(res => {
         return res.blob();
       })
       .then(res =>{
         this.setState({plot_src: URL.createObjectURL(res)});
+        this.update_accuracy();
+        this.setState({graph_loading: false}); 
       })
       .catch(error => console.log('Error:', error));
   }
   
   refresh_graph=()=>{
     this.update_image();
-    this.update_accuracy(); 
   }
 
 
@@ -70,7 +73,7 @@ class App extends React.Component {
 
         <div className='gui-container'>
           <div className='svm-display'>
-            <img src={this.state.plot_src} alt='graph'/>
+            <Plot src={this.state.plot_src} isLoading={this.state.graph_loading}/>
             <div className='graph-info-container'>
               <div className='info-item'>
                 <div className='control-label'> Model Accuracy</div>
