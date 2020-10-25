@@ -161,8 +161,8 @@ select {
 .loading-indicator{
   position: absolute;
   background-color: transparent;
-  left: 263px;
-  top: 183px;
+  left: 220px;/*(640/2 - 200/2)*/
+  top: 140px;/*(480/2 - 200/2)*/
   z-index: 2;
 }
 
@@ -179,7 +179,7 @@ select {
   position: absolute;
   z-index: 1;
   background-color: var(--background);
-  opacity: 0.5;
+  opacity: 0.25;
 }
 
 .info-item {
