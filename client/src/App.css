@@ -6,6 +6,8 @@
   --accent-light: #5f76fc;
   --accent-dark: #2546ff;
   --header:white;
+  --header-accent: #6b6eba;
+  --gui-background: white;
   /*--accent: #1ab394;*/
 }
 
@@ -40,8 +42,14 @@ html{
   background-color: var(--header);
 }
 
-.header-title {
+.title-container {
   background-color: var(--accent);
+}
+
+.header-title {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin: 0.4em 0;
 }
 
 .header-item, .header-title {
@@ -52,7 +60,7 @@ html{
 }
 
 .header-item:hover{
-  background-color: var(--accent);
+  background-color: var(--header-accent);
   cursor: pointer;
 } 
 
@@ -139,7 +147,7 @@ select {
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  background-color: var(--header);
+  background-color: var(--gui-background);
   border-radius: 10px;
   margin: 0 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
