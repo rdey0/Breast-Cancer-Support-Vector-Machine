@@ -23,12 +23,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 //app.use('/graph', graphRouter);
-
-
-const get_graph = 'get_svm_plot.py';
 var model_accuracy = '0'
 
 app.post("/graph", (req, res, next)=>{ 
+  const get_graph = 'get_svm_plot.py';
   var x1_label = req.body.x_var;
   var x2_label = req.body.y_var;
   var degree = req.body.degree;
@@ -50,6 +48,27 @@ app.post("/graph", (req, res, next)=>{
           console.log(err);
       });
       
+  });
+}); 
+
+app.post("/optimize_graph", (req, res, next)=>{ 
+  const optimize_graph = 'get_optimal_svm_plot.py'
+  var x1_label = req.body.x_var;
+  var x2_label = req.body.y_var;
+    
+  const options = {
+      args:[x1_label, x2_label],
+      scriptPath: './svm_scripts'
+  };
+
+  PythonShell.run(optimize_graph, options, (err, results)=>{
+      if(err){
+          console.log(err);
+      }
+      console.log(results);
+      var best_degree = results[0];
+      var best_cost = results[1];
+      res.json({best_degree: best_degree, best_cost: best_cost});
   });
 }); 
 

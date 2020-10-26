@@ -3,7 +3,7 @@ import React from 'react';
 export default class slider extends React.Component {
     constructor(props){
         super();
-        this.state = {value: 1};
+        this.state = {value: props.value};
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -20,7 +20,7 @@ export default class slider extends React.Component {
             <div className='slide-container'>
                 <div className='control-label'>{this.props.label}</div>
                 <input id={this.props.id} className="slider" type="range" min={this.props.min} max={this.props.max} 
-                    value={this.state.value} onChange={this.handleChange}/>
+                    value={this.props.value} onChange={this.handleChange}/>
             </div>
         )
     }

@@ -1,14 +1,12 @@
 /* Fonts and Colors */
 :root {
   --background: #e4e8eb;
-  /*--header: #2e4054;*/
   --accent: #546dfe;
   --accent-light: #5f76fc;
   --accent-dark: #2546ff;
   --header:white;
   --header-accent: #6b6eba;
   --gui-background: white;
-  /*--accent: #1ab394;*/
 }
 
 

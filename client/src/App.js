@@ -38,7 +38,7 @@ class App extends React.Component {
       })
   }
 
-  update_image=()=>{
+  refresh_graph=()=>{
     var request_params = {
       headers: {
         'Content-Type': "application/json;charset=utf-8"
@@ -59,10 +59,30 @@ class App extends React.Component {
       })
       .catch(error => console.log('Error:', error));
   }
-  
-  refresh_graph=()=>{
-    this.update_image();
+
+  optimize_graph=()=>{
+    var request_params = {
+      headers: {
+        'Content-Type': "application/json;charset=utf-8"
+      },
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      redirect: 'follow'
+    };
+    this.setState({graph_loading: true});
+    fetch('/optimize_graph', request_params)
+    .then(res => {
+      return res.json();
+    })
+    .then(res =>{
+      this.setState({degree: res.best_degree, cost: res.best_cost}, ()=>{
+        this.refresh_graph();
+        console.log(this.state);
+      });
+    })
+    .catch(error => console.log('Error:', error));
   }
+
 
 
   render(){
@@ -92,11 +112,11 @@ class App extends React.Component {
           <div className='controls'>
             <Select label='X Variable' id='x_var' variable_name='mean concavity' onChange={this.handle_field_change}/>
             <Select label='Y Variable' id='y_var' variable_name='worst concavity' onChange={this.handle_field_change}/>
-            <Slider label='Degree' id='degree' min='1' max='5' onChange={this.handle_field_change}/>
-            <Slider label='Cost' id='cost' min='1' max='10' onChange={this.handle_field_change}/>
+            <Slider label='Degree' id='degree' min='1' max='5' onChange={this.handle_field_change} value={this.state.degree}/>
+            <Slider label='Cost' id='cost' min='1' max='10' onChange={this.handle_field_change} value={this.state.cost}/>
             <div className='button-container'>
               <div className='update-graph' onClick={this.refresh_graph}>Graph</div>
-              <div className='update-graph' onClick={this.refresh_graph}>Optimize</div>
+              <div className='update-graph' onClick={this.optimize_graph}>Optimize</div>
             </div>
           </div>
         </div>
