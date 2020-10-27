@@ -89,8 +89,8 @@ class App extends React.Component {
     
     return (
       <div className="App">
-        <Header/>
-
+        <Header src={this.state.plot_src}/>
+        
         <div className='gui-container'>
           <div className='svm-display'>
             <Plot src={this.state.plot_src} isLoading={this.state.graph_loading}/>
