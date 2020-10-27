@@ -5,6 +5,8 @@ import Select from './components/select_box.js'
 import Slider from './components/slider.js'
 import Header from './components/header.js'
 import Plot from './components/graph_plot.js'
+import Onboarding from './components/onboarding.js'
+
 class App extends React.Component {
   state = {
     plot_src: graph_img, 
@@ -13,7 +15,8 @@ class App extends React.Component {
     degree: '1', 
     cost: '1',
     model_accuracy: 0,
-    graph_loading: false
+    graph_loading: false,
+    show_modal: true
   }
 
   handle_field_change=(id, value)=>{
@@ -90,7 +93,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header src={this.state.plot_src}/>
-        
+        <Onboarding showModal={this.state.show_modal}/>
         <div className='gui-container'>
           <div className='svm-display'>
             <Plot src={this.state.plot_src} isLoading={this.state.graph_loading}/>
