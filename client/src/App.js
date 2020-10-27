@@ -3,15 +3,17 @@ import './App.css';
 import graph_img from './graph_img/graph.png'
 import Select from './components/select_box.js'
 import Slider from './components/slider.js'
-
+import Header from './components/header.js'
+import Plot from './components/graph_plot.js'
 class App extends React.Component {
   state = {
     plot_src: graph_img, 
     x_var: 'mean concavity', 
     y_var: 'worst concavity', 
     degree: '1', 
-    cost: '5',
-    model_accuracy: null
+    cost: '1',
+    model_accuracy: 0,
+    graph_loading: false
   }
 
   handle_field_change=(id, value)=>{
@@ -30,11 +32,13 @@ class App extends React.Component {
     fetch('/accuracy', request_params)
       .then(res => res.json())
       .then(res => {
-        this.setState({model_accuracy: res.accuracy})
+        var num_figures = 4;
+        var accuracy = (parseFloat(res.accuracy) * 100).toPrecision(num_figures);
+        this.setState({model_accuracy: accuracy});
       })
   }
 
-  update_image=()=>{
+  refresh_graph=()=>{
     var request_params = {
       headers: {
         'Content-Type': "application/json;charset=utf-8"
@@ -43,52 +47,82 @@ class App extends React.Component {
       body: JSON.stringify(this.state),
       redirect: 'follow'
     };
-
+    this.setState({graph_loading: true});
     fetch('/graph', request_params)
       .then(res => {
         return res.blob();
       })
       .then(res =>{
         this.setState({plot_src: URL.createObjectURL(res)});
+        this.update_accuracy();
+        this.setState({graph_loading: false}); 
       })
       .catch(error => console.log('Error:', error));
   }
-  
-  refresh_graph=()=>{
-    this.update_image();
-    this.update_accuracy(); 
+
+  optimize_graph=()=>{
+    var request_params = {
+      headers: {
+        'Content-Type': "application/json;charset=utf-8"
+      },
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      redirect: 'follow'
+    };
+    this.setState({graph_loading: true});
+    fetch('/optimize_graph', request_params)
+    .then(res => {
+      return res.json();
+    })
+    .then(res =>{
+      this.setState({degree: res.best_degree, cost: res.best_cost}, ()=>{
+        this.refresh_graph();
+        console.log(this.state);
+      });
+    })
+    .catch(error => console.log('Error:', error));
   }
+
 
 
   render(){
     
     return (
       <div className="App">
-
-        <div className="App-header">
-          <h1>Breast Cancer SVM</h1>
-        </div>
+        <Header src={this.state.plot_src}/>
         
         <div className='gui-container'>
           <div className='svm-display'>
-            <img src={this.state.plot_src} alt='graph'/>
+            <Plot src={this.state.plot_src} isLoading={this.state.graph_loading}/>
+            <div className='graph-info-container'>
+              <div className='info-item'>
+                <div className='control-label'> Model Accuracy</div>
+                <div className='metric'>{this.state.model_accuracy}%</div>
+              </div>
+              <div className='info-item'>
+                <div className='control-label'> Degree</div>
+                <div className='metric'>{this.state.degree}</div>
+              </div>
+              <div className='info-item'>
+                <div className='control-label'> Cost</div>
+                <div className='metric'>{this.state.cost}</div>
+              </div>
+            </div>
           </div>
           <div className='controls'>
-            <div className='parameter-selectors'>
-              <Select id='x_var' variable_name='mean concavity' onChange={this.handle_field_change}/>
-              <Select id='y_var' variable_name='worst concavity' onChange={this.handle_field_change}/>
-            </div>
-            <div className='parameter-sliders'>
-              <Slider id='degree' min='1' max='5' onChange={this.handle_field_change}/>
-              <Slider id='cost' min='1' max='10' onChange={this.handle_field_change}/>
-            </div>
-            <div>
-              <button type='button' onClick={this.refresh_graph}>Generate Graph</button>
+            <Select label='X Variable' id='x_var' variable_name='mean concavity' onChange={this.handle_field_change}/>
+            <Select label='Y Variable' id='y_var' variable_name='worst concavity' onChange={this.handle_field_change}/>
+            <Slider label='Degree' id='degree' min='1' max='5' onChange={this.handle_field_change} value={this.state.degree}/>
+            <Slider label='Cost' id='cost' min='1' max='10' onChange={this.handle_field_change} value={this.state.cost}/>
+            <div className='button-container'>
+              <div className='update-graph' onClick={this.refresh_graph}>Graph</div>
+              <div className='update-graph' onClick={this.optimize_graph}>Optimize</div>
             </div>
           </div>
         </div>
       
       </div>
+
     );
   }
 }
