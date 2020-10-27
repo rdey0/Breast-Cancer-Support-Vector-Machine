@@ -13,6 +13,8 @@
   --header-accent: #6b6eba;
   --gui-background: white;
   --text: black;
+  --color: rgba(136, 136, 136, 0.986);
+  --onboarding-header-text: rgb(124, 124, 124);
 }
 
 
@@ -31,6 +33,34 @@ html{
 }
 
 /* Spacing and Size */
+
+.onboarding-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--onboarding-header-text);
+  font-size: 1.1em;
+}
+
+.change-page-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
+.change-page-next{
+  padding: 0.5em 1em;
+  margin-left: 0.7em;
+  border-radius: 20px;
+  color: white;
+  background-color: var(--accent);
+}
+
+.change-page-back {
+  
+}
 
 .App {
   text-align: center;
