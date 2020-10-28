@@ -79,7 +79,7 @@ export default class Onboarding extends React.Component {
 
                         {this.state.step_num < this.state.total_steps
                             ?<div className='change-page-next' onClick={this.next_page}>Next</div>
-                            :<div className='change-page-next' >Done</div>
+                            :<div className='change-page-next' onClick={this.props.closeModal}>Done</div>
                         }
                         
                     </div>
