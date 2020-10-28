@@ -20,7 +20,16 @@ class App extends React.Component {
     cost: '1',
     model_accuracy: 0,
     graph_loading: false,
-    show_modal: true
+    show_modal: false
+  }
+
+  handle_modal_open=()=>{
+    console.log('open modal');
+    this.setState({show_modal: true});
+  }
+
+  handle_modal_close=()=> {
+    this.setState({show_modal: false});
   }
 
   handle_field_change=(id, value)=>{
@@ -96,8 +105,8 @@ class App extends React.Component {
     
     return (
       <div className="App">
-        <Header src={this.state.plot_src}/>
-        <Onboarding showModal={this.state.show_modal} pages={onboarding_content}/>
+        <Header src={this.state.plot_src} showModal={this.handle_modal_open}/>
+        <Onboarding showModal={this.state.show_modal} pages={onboarding_content} closeModal={this.handle_modal_close}/>
         <div className='gui-container'>
           <div className='svm-display'>
             <Plot src={this.state.plot_src} isLoading={this.state.graph_loading}/>

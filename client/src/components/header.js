@@ -7,7 +7,7 @@ export default function Header (props){
             <div className='title-container'>
                 <div className='header-title'>Breast Cancer SVM</div>
             </div>
-            <div className='header-item'>
+            <div className='header-item' onClick={props.showModal}>
                 <div>Tutorial</div>
             </div>
             <div className='header-item'>

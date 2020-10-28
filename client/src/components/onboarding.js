@@ -66,14 +66,22 @@ export default class Onboarding extends React.Component {
 
     render() {
         return(
-            <Modal isOpen={this.state.modal_open} style={modal_styles} ariaHideApp={false}>
+            <Modal isOpen={this.props.showModal} style={modal_styles} ariaHideApp={false}>
                 <div className='onboarding-controls'>
                     <div className='step-container'>
                         <div>Step {this.state.step_num} / {this.state.total_steps}</div>
                     </div>
                     <div className='change-page-container'>
-                        <div className='change-page-back' onClick={this.previous_page}>Back</div>
-                        <div className='change-page-next' onClick={this.next_page}>Next</div>
+
+                        {this.state.step_num > 1 &&
+                            <div className='change-page-back' onClick={this.previous_page}>Back</div>
+                        }
+
+                        {this.state.step_num < this.state.total_steps
+                            ?<div className='change-page-next' onClick={this.next_page}>Next</div>
+                            :<div className='change-page-next' >Done</div>
+                        }
+                        
                     </div>
                 </div>
                 <OnboardingContent pages={this.state.pages} pageNum={this.state.step_num}/>
