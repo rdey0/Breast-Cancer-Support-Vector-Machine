@@ -8,8 +8,11 @@ import Plot from './components/graph_plot.js'
 import Onboarding from './components/onboarding.js'
 import Page_0 from './components/onboarding_page_0.js'
 import Page_1 from './components/onboarding_page_1.js'
+import Page_2 from './components/onboarding_page_2.js'
+import Page_3 from './components/onboarding_page_3.js'
+import Page_4 from './components/onboarding_page_4.js'
 
-const onboarding_content = [Page_0, Page_1];
+const onboarding_content = [Page_0, Page_1, Page_2, Page_3, Page_4];
 
 class App extends React.Component {
   state = {

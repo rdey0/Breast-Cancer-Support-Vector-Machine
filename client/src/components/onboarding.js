@@ -49,19 +49,13 @@ export default class Onboarding extends React.Component {
         const page_num = this.state.step_num;
         const num_pages = this.state.total_steps;
         if (page_num < num_pages)
-            this.setState({step_num: page_num + 1})
-        else{
-            //change next button to done button
-        }     
+            this.setState({step_num: page_num + 1})   
     }
 
     previous_page() {
         const page_num = this.state.step_num;
         if (page_num > 1)
-            this.setState({step_num: page_num - 1})
-        else{
-            //hide back button
-        }        
+            this.setState({step_num: page_num - 1})       
     }
 
     render() {
