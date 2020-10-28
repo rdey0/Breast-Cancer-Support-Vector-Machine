@@ -6,6 +6,10 @@ import Slider from './components/slider.js'
 import Header from './components/header.js'
 import Plot from './components/graph_plot.js'
 import Onboarding from './components/onboarding.js'
+import Page_0 from './components/onboarding_page_0.js'
+import Page_1 from './components/onboarding_page_1.js'
+
+const onboarding_content = [Page_0, Page_1];
 
 class App extends React.Component {
   state = {
@@ -93,7 +97,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header src={this.state.plot_src}/>
-        <Onboarding showModal={this.state.show_modal}/>
+        <Onboarding showModal={this.state.show_modal} pages={onboarding_content}/>
         <div className='gui-container'>
           <div className='svm-display'>
             <Plot src={this.state.plot_src} isLoading={this.state.graph_loading}/>

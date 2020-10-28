@@ -56,10 +56,11 @@ html{
   border-radius: 20px;
   color: white;
   background-color: var(--accent);
+  cursor: pointer;
 }
 
 .change-page-back {
-  
+  cursor: pointer;
 }
 
 .App {

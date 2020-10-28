@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
 
@@ -17,37 +16,67 @@ const modal_styles = {
         boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px'
     }
 };
+
+
+function OnboardingContent (props) {
+    return props.pages
+        .filter((Page, index) => index === props.pageNum - 1)
+        .map((Page, index) => {
+            return <Page key={index}/>
+        });
+}
+
 export default class Onboarding extends React.Component {
 
     constructor(props) {
         super();
         this.state = {
             modal_open: props.showModal, 
-            step_num: 1, 
-            total_steps: 1
+            step_num: 1,
+            pages: props.pages, 
+            total_steps: props.pages.length
         };
         this.close_modal = this.close_modal.bind(this);
+        this.next_page = this.next_page.bind(this);
+        this.previous_page = this.previous_page.bind(this);
     }
     
     close_modal(){
         this.setState({modal_open: false})
     }
 
+    next_page() {
+        const page_num = this.state.step_num;
+        const num_pages = this.state.total_steps;
+        if (page_num < num_pages)
+            this.setState({step_num: page_num + 1})
+        else{
+            //change next button to done button
+        }     
+    }
+
+    previous_page() {
+        const page_num = this.state.step_num;
+        if (page_num > 1)
+            this.setState({step_num: page_num - 1})
+        else{
+            //hide back button
+        }        
+    }
+
     render() {
         return(
-            <Modal isOpen={this.state.modal_open} style={modal_styles}>
+            <Modal isOpen={this.state.modal_open} style={modal_styles} ariaHideApp={false}>
                 <div className='onboarding-controls'>
                     <div className='step-container'>
                         <div>Step {this.state.step_num} / {this.state.total_steps}</div>
                     </div>
                     <div className='change-page-container'>
-                        <div class='change-page-back'>Back</div>
-                        <div class='change-page-next'>Next</div>
+                        <div className='change-page-back' onClick={this.previous_page}>Back</div>
+                        <div className='change-page-next' onClick={this.next_page}>Next</div>
                     </div>
                 </div>
-                <div class-Name='onboarding-content'>
-
-                </div>
+                <OnboardingContent pages={this.state.pages} pageNum={this.state.step_num}/>
             </Modal>
         );
     }
