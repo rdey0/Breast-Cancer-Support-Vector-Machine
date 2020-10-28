@@ -34,6 +34,10 @@ html{
 
 /* Spacing and Size */
 
+.onboarding-content {
+  height: 90%;
+}
+
 .onboarding-controls {
   display: flex;
   flex-direction: row;
@@ -41,6 +45,7 @@ html{
   align-items: center;
   color: var(--onboarding-header-text);
   font-size: 1.1em;
+  height: 10%;
 }
 
 .change-page-container {

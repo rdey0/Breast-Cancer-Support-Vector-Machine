@@ -22,7 +22,7 @@ function OnboardingContent (props) {
     return props.pages
         .filter((Page, index) => index === props.pageNum - 1)
         .map((Page, index) => {
-            return <Page key={index}/>
+            return <div className='onboarding-content' key={index}><Page/></div>
         });
 }
 
