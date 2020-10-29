@@ -36,6 +36,18 @@ html{
 
 .onboarding-content {
   height: 90%;
+  text-align: center;
+
+}
+
+.onboarding-content img{
+  max-width:35%;
+  max-height:35%;
+
+}
+
+.onboarding-content p{
+  text-align: center
 }
 
 .onboarding-controls {
@@ -152,6 +164,7 @@ select {
   border-radius: 0px;
   border: 2px solid var(--background);
   cursor: pointer;
+  transition: 3s;
 }
 .slider::-moz-range-track {
   width: 100%;
@@ -172,6 +185,7 @@ select {
   background: var(--accent);
   cursor: pointer;
   margin-top: -13px;
+  
 }
 
 .slide::-moz-range-thumb {

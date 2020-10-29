@@ -1,5 +1,5 @@
 import React from 'react'
-
+import drawing from '../graph_img/success_drawing.svg'
 export default function GraphButtons() {
     return (
         <div>
@@ -7,8 +7,9 @@ export default function GraphButtons() {
             <p>
                 Check out the updated graph and see how well you did
             </p>
+            <img src={drawing}/>
             <p>
-                Additionally, The results dashboard tells you how accurately 
+                Additionally, The results dashboard under your graph tells you how accurately 
                 your model performed and shows you the degree and cost parameters 
                 you or the optimize feature chose.
             </p>
