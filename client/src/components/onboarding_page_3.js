@@ -6,7 +6,7 @@ export default function GraphButtons() {
             <h2>Update the Graph</h2> 
             <p>
                 <b>Graph: </b>
-                Creates your custom model which draws a lines between
+                Creates your custom model which draws lines between
                 cancer positive and cancer negative patients
             </p> 
            <p>

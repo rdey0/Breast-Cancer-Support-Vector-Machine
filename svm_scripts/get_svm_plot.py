@@ -104,7 +104,6 @@ def get_graph(x1_label, x2_label, degree, cost):
     fig, ax = plt.subplots(1, 1)
     xx, yy = make_meshgrid(X.iloc[:,0], X.iloc[:,1])
     plot_contours(ax, svm, xx, yy, cmap=plt.cm.coolwarm, alpha=0.8)
-
     ax.scatter(yes_cancer.loc[:,[x1_label]], yes_cancer.loc[:,[x2_label]], 
         label="Cancer Positive", color="blue", edgecolors='k')
     ax.scatter(no_cancer.loc[:,[x1_label]], no_cancer.loc[:,[x2_label]], 
@@ -113,8 +112,9 @@ def get_graph(x1_label, x2_label, degree, cost):
     ax.set_xlim(float(xlim_min), float(xlim_max))
     ylim_min, ylim_max = get_axlims(cancer.loc[:,[x2_label]], 0.1)
     ax.set_ylim(float(ylim_min), float(ylim_max))
-    ax.set_xlabel(x1_label)
-    ax.set_ylabel(x2_label)
+    #ax.set_xlabel(x1_label)
+    #ax.set_ylabel(x2_label)
+    
     ax.legend(loc="upper right")
     # Save the plot as an image
     plt.savefig('./graph/graph.png')

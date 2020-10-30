@@ -266,20 +266,23 @@ select {
 .loading-indicator{
   position: absolute;
   background-color: transparent;
-  left: 220px;/*(640/2 - 200/2)*/
-  top: 140px;/*(480/2 - 200/2)*/
+  left: 260px;/*(720/2 - 200/2)*/
+  top: 170px;/*(540/2 - 200/2)*/
   z-index: 2;
 }
 
 .graph {
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  max-height: 480px;
+  height: 540px;
+  width: 720px;
+  pointer-events: none;
+  user-select: none;
 }
 
 .graph-overlay {
-  height: 480px;
-  width: 640px;
+  height: 540px;
+  width: 720px;
   border-radius: 10px;
   position: absolute;
   z-index: 1;
@@ -305,11 +308,12 @@ select {
   margin-top: 0.5em;
   background-color: white;
   border-radius: 10px;
-  width: 640px;
+  width: 100%;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+
+  justify-content: space-between;
 }
 
 .gui-container {
