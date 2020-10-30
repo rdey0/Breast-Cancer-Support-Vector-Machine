@@ -135,7 +135,6 @@ class App extends React.Component {
             <Slider label='Cost' id='cost' min='1' max='10' onChange={this.handle_field_change} value={this.state.cost}/>
             <div className='button-container'>
               <div className='update-graph' onClick={this.refresh_graph}>Graph</div>
-              <div className='update-graph' onClick={this.optimize_graph}>Optimize</div>
             </div>
           </div>
         </div>
