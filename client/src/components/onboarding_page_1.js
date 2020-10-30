@@ -7,12 +7,24 @@ export default function DataSelection() {
             <h1>First Choose Your Data</h1>
             <p>
                 You can choose your <b>X Variable</b> and <b>Y Variable</b> data sets on the control
-                panel to the right of the graph. Don't worry about which data 
+                panel to the right of the graph  
+            </p>
+            <p>
+                This is the data your machine learning model will learn from
+            </p>
+            <p>
+                Don't worry about which data 
                 set is the x variable and which is the y, the only thing 
-                that matters is the combination! 
+                that matters is the combination!
             </p>
             
-            <p>
+            
+        </div>
+    );
+}
+
+/*
+<p>
                 <b>Note: </b>
                 The data sets you select have the greatest impact on the
                 accuracy of the classifier. Remember, this is the information 
@@ -21,6 +33,4 @@ export default function DataSelection() {
                 separation (puts the most distance) between cancer positive and 
                 cancer negative points.
             </p>
-        </div>
-    );
-}
+*/

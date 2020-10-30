@@ -6,15 +6,14 @@ export default function GraphButtons() {
             <h1>Update the Graph</h1> 
             <p>
                 <b>Graph: </b>
-                Draws a decision boundary for your selected data using the
-                selected parameters.
+                Creates your custom model which draws a lines between
+                cancer positive and cancer negative patients
             </p> 
-            <p>
-                <b>Optimize: </b>
-                Finds the cost and degree parameters which result in the 
-                highest accuracy for your selected data. The graph is also 
-                updated.
-            </p>
+           <p>
+               Blue regions are where your model thinks cancer positive 
+               patients are and red regions are where your model thinks 
+               cancer negative patients are
+           </p>
         
         </div>
     );

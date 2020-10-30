@@ -8,9 +8,8 @@ export default function GraphButtons() {
                 Check out the updated graph and see how well you did
             </p>
             <p>
-                Additionally, The results dashboard under your graph tells you how accurately 
-                your model performed and shows you the degree and cost parameters 
-                you or the optimize feature chose.
+                The higher the model accuracy, the better your model
+                was able to predict the presence of cancer!
             </p>
         
         </div>

@@ -8,7 +8,7 @@ export default function ParameterSelection() {
                 
             <p>
                 <b>Cost: </b>
-                Determines how heavily to punish the model for incorrectly
+                Determines how heavily to punish your model for incorrectly
                 classifying data points. The higher the cost, the greater
                 the punishment.
             </p>
@@ -16,7 +16,7 @@ export default function ParameterSelection() {
             <p>
                 <b>Degree: </b>
                 Determines how flexible the decision boundary can be. The 
-                higher the degree, the 'curvier' the decision boundary may
+                higher the degree, the 'curvier' the separating line may
                 appear.
             </p>
             
