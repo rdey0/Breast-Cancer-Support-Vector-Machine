@@ -1,5 +1,5 @@
 import React from 'react'
-import drawing from '../graph_img/metric_drawing.svg'
+
 export default function ParameterSelection() {
     return (
         <div className='onboarding-content'>

@@ -1,5 +1,4 @@
 import React from 'react'
-import drawing from '../graph_img/ai_drawing.svg'
 export default function Introduction() {
     return (
         <div className='onboarding-content'>

@@ -1,5 +1,5 @@
 import React from 'react'
-import drawing from '../graph_img/success_drawing.svg'
+
 export default function GraphButtons() {
     return (
         <div className='onboarding-content'>

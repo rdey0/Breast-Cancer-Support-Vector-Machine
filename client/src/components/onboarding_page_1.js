@@ -1,5 +1,4 @@
 import React from 'react'
-import drawing from '../graph_img/data_drawing.svg'
 export default function DataSelection() {
     return (
         <div className='onboarding-content'>
