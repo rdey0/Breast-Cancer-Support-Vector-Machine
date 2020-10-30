@@ -7,13 +7,13 @@ const modal_styles = {
         backgroundColor: 'rgba(136, 136, 136, 0.7)'
     },
     content:{
-        height: '60%',
-        width: '50%',
-        top: '15%',
-        left: '20%',
+        height: '50%',
+        width: '40%',
         border: 'none',
         borderRadius: '10px',
-        boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px'
+        boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px',
+        margin: 'auto auto',
+        overflow: 'hidden',
     }
 };
 
@@ -22,7 +22,7 @@ function OnboardingContent (props) {
     return props.pages
         .filter((Page, index) => index === props.pageNum - 1)
         .map((Page, index) => {
-            return <div className='onboarding-content' key={index}><Page/></div>
+            return <div className='onboarding-content-container' key={index}><Page/></div>
         });
 }
 
@@ -79,6 +79,7 @@ export default class Onboarding extends React.Component {
                     </div>
                 </div>
                 <OnboardingContent pages={this.state.pages} pageNum={this.state.step_num}/>
+
             </Modal>
         );
     }

@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function GraphButtons() {
     return (
-        <div>
+        <div className='onboarding-content'>
             <h1>Update the Graph</h1> 
             <p>
                 <b>Graph: </b>

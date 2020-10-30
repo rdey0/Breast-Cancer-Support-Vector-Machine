@@ -33,22 +33,45 @@ html{
 }
 
 /* Spacing and Size */
+.content-container {
+  
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+  opacity: 0;
+}
+
+.onboarding-content-container{
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 85%;
+}
 
 .onboarding-content {
-  height: 90%;
-  text-align: center;
+  width: 80%;
+  
+}
 
+.onboarding-content h1 {
+  text-align: center;
 }
 
 .onboarding-content img{
   max-width:35%;
   max-height:35%;
-
 }
 
-.onboarding-content p{
-  text-align: center
-}
 
 .onboarding-controls {
   display: flex;
@@ -58,6 +81,8 @@ html{
   color: var(--onboarding-header-text);
   font-size: 1.1em;
   height: 10%;
+  margin-bottom: 0.5em;
+  
 }
 
 .change-page-container {

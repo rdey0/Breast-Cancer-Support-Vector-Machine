@@ -2,7 +2,8 @@ import React from 'react'
 import drawing from '../graph_img/data_drawing.svg'
 export default function DataSelection() {
     return (
-        <div>
+        <div className='onboarding-content'>
+            
             <h1>First Choose Your Data</h1>
             <p>
                 You can choose your <b>X Variable</b> and <b>Y Variable</b> data sets on the control
@@ -10,7 +11,7 @@ export default function DataSelection() {
                 set is the x variable and which is the y, the only thing 
                 that matters is the combination! 
             </p>
-            <img src={drawing}/>
+            
             <p>
                 <b>Note: </b>
                 The data sets you select have the greatest impact on the

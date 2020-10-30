@@ -2,7 +2,7 @@ import React from 'react'
 import drawing from '../graph_img/metric_drawing.svg'
 export default function ParameterSelection() {
     return (
-        <div>
+        <div className='onboarding-content'>
             <h1>Choose Parameters</h1>
         
                 
@@ -19,7 +19,7 @@ export default function ParameterSelection() {
                 higher the degree, the 'curvier' the decision boundary may
                 appear.
             </p>
-            <img src={drawing}/>
+            
         
         </div>
     );

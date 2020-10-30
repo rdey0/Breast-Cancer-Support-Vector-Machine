@@ -2,7 +2,8 @@ import React from 'react'
 import drawing from '../graph_img/ai_drawing.svg'
 export default function Introduction() {
     return (
-        <div>
+        <div className='onboarding-content'>
+            
             <h1>What is This?</h1>
             
             <p>
@@ -13,7 +14,6 @@ export default function Introduction() {
                 each classification of data. In our case, boundaries are drawn
                 between cancer positive and cancer negative patients.
             </p>
-            <img src={drawing}/>
         </div>
     );
 }
