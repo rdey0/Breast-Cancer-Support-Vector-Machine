@@ -3,7 +3,7 @@ import React from 'react'
 export default function GraphButtons() {
     return (
         <div className='onboarding-content'>
-            <h1>Update the Graph</h1> 
+            <h2>Update the Graph</h2> 
             <p>
                 <b>Graph: </b>
                 Creates your custom model which draws a lines between

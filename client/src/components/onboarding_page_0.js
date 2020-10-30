@@ -4,7 +4,7 @@ export default function Introduction() {
     return (
         <div className='onboarding-content'>
             
-            <h1>What is This?</h1>
+            <h2>What is This?</h2>
             
             <p>
                 Create your own machine learning model and have it 

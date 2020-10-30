@@ -4,7 +4,7 @@ export default function DataSelection() {
     return (
         <div className='onboarding-content'>
             
-            <h1>First Choose Your Data</h1>
+            <h2>First Choose Your Data</h2>
             <p>
                 You can choose your <b>X Variable</b> and <b>Y Variable</b> data sets on the control
                 panel to the right of the graph  

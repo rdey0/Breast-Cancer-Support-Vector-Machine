@@ -3,7 +3,7 @@ import drawing from '../graph_img/success_drawing.svg'
 export default function GraphButtons() {
     return (
         <div className='onboarding-content'>
-            <h1>That's it!</h1>
+            <h2>That's it!</h2>
             <p>
                 Check out the updated graph and see how well you did
             </p>

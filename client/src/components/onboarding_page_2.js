@@ -3,7 +3,7 @@ import drawing from '../graph_img/metric_drawing.svg'
 export default function ParameterSelection() {
     return (
         <div className='onboarding-content'>
-            <h1>Choose Parameters</h1>
+            <h2>Choose Parameters</h2>
         
                 
             <p>
