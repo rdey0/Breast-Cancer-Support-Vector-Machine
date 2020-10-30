@@ -6,19 +6,24 @@
   --accent: #666adb;
   /*--accent-light: #5f76fc;*/
   --accent-light: #8c8feb;
-  --accent-complement: #c558c5;
+  --accent-complement: #484de2;
   /*--accent-dark: #2546ff;*/
   --accent-dark: #484de2;
   --header: #7579e7;
   --header-accent: #6b6eba;
   --gui-background: white;
   --text: black;
+  --color: rgba(136, 136, 136, 0.986);
+  --onboarding-header-text: rgb(124, 124, 124);
+  --onboarding-body-text: rgb(83, 83, 83);
 }
+
 
 
 html{
   background: var(--background);
 }
+
 
 
 .App{
@@ -31,6 +36,79 @@ html{
 }
 
 /* Spacing and Size */
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+  opacity: 0;
+}
+
+.onboarding-content-container{
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 85%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.onboarding-content {
+  width: 80%;
+}
+
+.onboarding-content h2 {
+  text-align: center;
+}
+
+.onboarding-content p {
+  color: var(--onboarding-body-text);
+  font-size: 1.2em;
+}
+
+.onboarding-content img{
+  max-width:35%;
+  max-height:35%;
+}
+
+
+.onboarding-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--onboarding-header-text);
+  font-size: 1.1em;
+  height: 10%;
+  margin-bottom: 0.5em;
+  user-select: none;
+}
+
+.change-page-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
+.change-page-next{
+  padding: 0.5em 1em;
+  margin-left: 0.7em;
+  border-radius: 20px;
+  color: white;
+  background-color: var(--accent);
+  cursor: pointer;
+}
+
+.change-page-back {
+  cursor: pointer;
+}
 
 .App {
   text-align: center;
@@ -116,6 +194,7 @@ select {
   border-radius: 0px;
   border: 2px solid var(--background);
   cursor: pointer;
+  transition: 3s;
 }
 .slider::-moz-range-track {
   width: 100%;
@@ -136,6 +215,7 @@ select {
   background: var(--accent);
   cursor: pointer;
   margin-top: -13px;
+  
 }
 
 .slide::-moz-range-thumb {
@@ -186,20 +266,23 @@ select {
 .loading-indicator{
   position: absolute;
   background-color: transparent;
-  left: 220px;/*(640/2 - 200/2)*/
-  top: 140px;/*(480/2 - 200/2)*/
+  left: 260px;/*(720/2 - 200/2)*/
+  top: 170px;/*(540/2 - 200/2)*/
   z-index: 2;
 }
 
 .graph {
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  max-height: 480px;
+  height: 540px;
+  width: 720px;
+  pointer-events: none;
+  user-select: none;
 }
 
 .graph-overlay {
-  height: 480px;
-  width: 640px;
+  height: 540px;
+  width: 720px;
   border-radius: 10px;
   position: absolute;
   z-index: 1;
@@ -225,11 +308,12 @@ select {
   margin-top: 0.5em;
   background-color: white;
   border-radius: 10px;
-  width: 640px;
+  width: 100%;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+
+  justify-content: space-between;
 }
 
 .gui-container {
@@ -249,12 +333,13 @@ select {
   color: var(--background);
   background-color: var(--accent);
   appearance: none;
-  padding: 0.7em;
+  padding: 0.8em;
   cursor: pointer;
-  width: 6em;
+  width: 10em;
   margin: 0 auto;
-  margin-top: 4em;
+  margin-top: 3em;
   border-radius: 5px;
+  bottom: 0px;
 }
 
 .update-graph:hover {
@@ -296,7 +381,7 @@ select {
   }
 
   .update-graph {
-    margin-top: 0;
+    margin-top: 1em;
     padding: 0.5em;
   }
 

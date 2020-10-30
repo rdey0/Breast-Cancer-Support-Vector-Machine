@@ -5,6 +5,15 @@ import Select from './components/select_box.js'
 import Slider from './components/slider.js'
 import Header from './components/header.js'
 import Plot from './components/graph_plot.js'
+import Onboarding from './components/onboarding.js'
+import Page_0 from './components/onboarding_page_0.js'
+import Page_1 from './components/onboarding_page_1.js'
+import Page_2 from './components/onboarding_page_2.js'
+import Page_3 from './components/onboarding_page_3.js'
+import Page_4 from './components/onboarding_page_4.js'
+
+const onboarding_content = [Page_0, Page_1, Page_2, Page_3, Page_4];
+
 class App extends React.Component {
   state = {
     plot_src: graph_img, 
@@ -13,7 +22,17 @@ class App extends React.Component {
     degree: '1', 
     cost: '1',
     model_accuracy: 0,
-    graph_loading: false
+    graph_loading: false,
+    show_modal: false
+  }
+
+  handle_modal_open=()=>{
+    console.log('open modal');
+    this.setState({show_modal: true});
+  }
+
+  handle_modal_close=()=> {
+    this.setState({show_modal: false});
   }
 
   handle_field_change=(id, value)=>{
@@ -89,8 +108,8 @@ class App extends React.Component {
     
     return (
       <div className="App">
-        <Header src={this.state.plot_src}/>
-        
+        <Header src={this.state.plot_src} showModal={this.handle_modal_open}/>
+        <Onboarding showModal={this.state.show_modal} pages={onboarding_content} closeModal={this.handle_modal_close}/>
         <div className='gui-container'>
           <div className='svm-display'>
             <Plot src={this.state.plot_src} isLoading={this.state.graph_loading}/>
@@ -116,7 +135,6 @@ class App extends React.Component {
             <Slider label='Cost' id='cost' min='1' max='10' onChange={this.handle_field_change} value={this.state.cost}/>
             <div className='button-container'>
               <div className='update-graph' onClick={this.refresh_graph}>Graph</div>
-              <div className='update-graph' onClick={this.optimize_graph}>Optimize</div>
             </div>
           </div>
         </div>
