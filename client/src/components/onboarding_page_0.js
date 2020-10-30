@@ -8,8 +8,8 @@ export default function Introduction() {
             
             <p>
                 Create your own machine learning model and have it 
-                draw boundaries between cancer positive and cancer
-                negative patients
+                classify cancer positive and cancer negative patients
+                by drawing boundaries between the two
             </p>
         </div>
     );

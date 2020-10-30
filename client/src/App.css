@@ -6,7 +6,7 @@
   --accent: #666adb;
   /*--accent-light: #5f76fc;*/
   --accent-light: #8c8feb;
-  --accent-complement: #c558c5;
+  --accent-complement: #484de2;
   /*--accent-dark: #2546ff;*/
   --accent-dark: #484de2;
   --header: #7579e7;
@@ -15,12 +15,15 @@
   --text: black;
   --color: rgba(136, 136, 136, 0.986);
   --onboarding-header-text: rgb(124, 124, 124);
+  --onboarding-body-text: rgb(83, 83, 83);
 }
+
 
 
 html{
   background: var(--background);
 }
+
 
 
 .App{
@@ -33,9 +36,6 @@ html{
 }
 
 /* Spacing and Size */
-.content-container {
-  
-}
 
 .ReactModal__Overlay {
   opacity: 0;
@@ -56,15 +56,20 @@ html{
   flex-direction: column;
   align-items: center;
   height: 85%;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .onboarding-content {
   width: 80%;
-  
 }
 
 .onboarding-content h2 {
   text-align: center;
+}
+
+.onboarding-content p {
+  color: var(--onboarding-body-text);
+  font-size: 1.2em;
 }
 
 .onboarding-content img{
@@ -82,7 +87,7 @@ html{
   font-size: 1.1em;
   height: 10%;
   margin-bottom: 0.5em;
-  
+  user-select: none;
 }
 
 .change-page-container {
