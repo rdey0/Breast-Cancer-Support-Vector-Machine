@@ -2,10 +2,10 @@
   "name": "express-react",
   "version": "0.0.0",
   "private": true,
-  "homepage":"http://rdey0.github.io/cancer_classifier",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "build": "cd client && react-scripts build",
     "start": "concurrently \"node ./bin/www\" \"cd client && npm start\""
   },
   "dependencies": {
@@ -19,7 +19,7 @@
     "python": "0.0.4",
     "python-shell": "^2.0.2",
     "python3": "0.0.1",
-    "react-modal": "^3.11.2"
+    "react-scripts": "^4.0.0"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
