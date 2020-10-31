@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/cancer_classifier/static/css/main.4b4264d2.chunk.css",
-    "main.js": "/cancer_classifier/static/js/main.c223fd17.chunk.js",
-    "main.js.map": "/cancer_classifier/static/js/main.c223fd17.chunk.js.map",
+    "main.js": "/cancer_classifier/static/js/main.f3776f25.chunk.js",
+    "main.js.map": "/cancer_classifier/static/js/main.f3776f25.chunk.js.map",
     "runtime-main.js": "/cancer_classifier/static/js/runtime-main.23e6e9b4.js",
     "runtime-main.js.map": "/cancer_classifier/static/js/runtime-main.23e6e9b4.js.map",
     "static/js/2.7138db75.chunk.js": "/cancer_classifier/static/js/2.7138db75.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.23e6e9b4.js",
     "static/js/2.7138db75.chunk.js",
     "static/css/main.4b4264d2.chunk.css",
-    "static/js/main.c223fd17.chunk.js"
+    "static/js/main.f3776f25.chunk.js"
   ]
 }
