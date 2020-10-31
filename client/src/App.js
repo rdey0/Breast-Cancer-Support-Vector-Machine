@@ -36,9 +36,7 @@ class App extends React.Component {
   }
 
   handle_field_change=(id, value)=>{
-    this.setState({[id]: value}, ()=>{
-      console.log('app state:',this.state);
-    });
+    this.setState({[id]: value});
   }
 
   update_accuracy=()=>{
@@ -48,7 +46,7 @@ class App extends React.Component {
       },
       method: 'GET'
     }
-    fetch('/accuracy', request_params)
+    fetch('https://cancer-classifier.herokuapp.com/graph/accuracy', request_params)
       .then(res => res.json())
       .then(res => {
         var num_figures = 4;
@@ -63,11 +61,12 @@ class App extends React.Component {
         'Content-Type': "application/json;charset=utf-8"
       },
       method: 'POST',
+      mode: 'cors',
       body: JSON.stringify(this.state),
       redirect: 'follow'
     };
     this.setState({graph_loading: true});
-    fetch('/graph', request_params)
+    fetch('https://cancer-classifier.herokuapp.com/graph', request_params)
       .then(res => {
         return res.blob();
       })

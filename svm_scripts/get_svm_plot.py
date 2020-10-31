@@ -117,7 +117,7 @@ def get_graph(x1_label, x2_label, degree, cost):
     
     ax.legend(loc="upper right")
     # Save the plot as an image
-    plt.savefig('./graph/graph.png')
+    plt.savefig('./routes/graph/graph.png')
     print (get_svm_accuracy(svm, x_test, y_test))
 
 # load script args

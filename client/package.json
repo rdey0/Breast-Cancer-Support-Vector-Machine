@@ -2,7 +2,6 @@
   "name": "breast_cancer_svm",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3005",
   "homepage": "http://rdey0.github.io/cancer_classifier",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
