@@ -6,7 +6,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "cd client && react-scripts build",
-    "start": "concurrently \"node ./bin/www\" \"cd client && npm start\""
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "child_process": "^1.0.2",
