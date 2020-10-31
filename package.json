@@ -3,9 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "build": "cd client && react-scripts build",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./bin/www"
   },
   "dependencies": {
@@ -19,6 +17,7 @@
     "python": "0.0.4",
     "python-shell": "^2.0.2",
     "python3": "0.0.1",
+    "react": "^17.0.1",
     "react-scripts": "^4.0.0"
   },
   "devDependencies": {
