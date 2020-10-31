@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/cancer_classifier/static/css/main.4b4264d2.chunk.css",
+    "main.js": "/cancer_classifier/static/js/main.c223fd17.chunk.js",
+    "main.js.map": "/cancer_classifier/static/js/main.c223fd17.chunk.js.map",
+    "runtime-main.js": "/cancer_classifier/static/js/runtime-main.23e6e9b4.js",
+    "runtime-main.js.map": "/cancer_classifier/static/js/runtime-main.23e6e9b4.js.map",
+    "static/js/2.7138db75.chunk.js": "/cancer_classifier/static/js/2.7138db75.chunk.js",
+    "static/js/2.7138db75.chunk.js.map": "/cancer_classifier/static/js/2.7138db75.chunk.js.map",
+    "index.html": "/cancer_classifier/index.html",
+    "static/css/main.4b4264d2.chunk.css.map": "/cancer_classifier/static/css/main.4b4264d2.chunk.css.map",
+    "static/js/2.7138db75.chunk.js.LICENSE.txt": "/cancer_classifier/static/js/2.7138db75.chunk.js.LICENSE.txt",
+    "static/media/graph.8f78b8bb.png": "/cancer_classifier/static/media/graph.8f78b8bb.png",
+    "static/media/loading_indicator.fef9519a.svg": "/cancer_classifier/static/media/loading_indicator.fef9519a.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.23e6e9b4.js",
+    "static/js/2.7138db75.chunk.js",
+    "static/css/main.4b4264d2.chunk.css",
+    "static/js/main.c223fd17.chunk.js"
+  ]
+}
