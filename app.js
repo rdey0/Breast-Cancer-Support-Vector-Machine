@@ -13,7 +13,7 @@ var app = express();
 // Add headers
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://rdey0.github.io');
+  res.setHeader('Access-Control-Allow-Origin', 'https://rdey0.github.io');
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   // Request headers you wish to allow
