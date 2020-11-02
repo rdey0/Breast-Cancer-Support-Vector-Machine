@@ -3,33 +3,32 @@ const path = require('path');
 const {PythonShell} = require('python-shell')
 var router = express.Router();
 
-
 var model_accuracy = '0'
 router.post("/", (req, res, next)=>{
-  const get_graph = 'get_svm_plot.py';
-  var x1_label = req.body.x_var;
-  var x2_label = req.body.y_var;
-  var degree = req.body.degree;
-  var cost = req.body.cost;
-    
-  const options = {
-      args:[x1_label, x2_label, degree, cost],
-      scriptPath: './svm_scripts',
-      pythonPath: __dirname + '/../svm_scripts/python_env/bin/python'
-  };
+    const get_graph = 'get_svm_plot.py';
+    var x1_label = req.body.x_var;
+    var x2_label = req.body.y_var;
+    var degree = req.body.degree;
+    var cost = req.body.cost;
+        
+    const options = {
+        args:[x1_label, x2_label, degree, cost],
+        scriptPath: './svm_scripts',
+        pythonPath: __dirname + '/../svm_scripts/python_env/bin/python'
+    };
 
-  PythonShell.run(get_graph, options, (err, results)=>{
-      if(err){
-          console.log(err);
-      }
-      console.log(results);
-      model_accuracy = results[0]
-      res.sendFile(__dirname + '/graph/graph.png', options, (err) =>{
-        if(err)
-          console.log(err);
-      });
-      
-  });
+    PythonShell.run(get_graph, options, (err, results)=>{
+        if(err){
+            console.log(err);
+        }
+        console.log(results);
+        model_accuracy = results[0]
+        res.sendFile(__dirname + '/graph/graph.png', options, (err) =>{
+            if(err)
+            console.log(err);
+        });
+        
+    });
 });
 
 router.get("/accuracy", (req, res)=>{ 
