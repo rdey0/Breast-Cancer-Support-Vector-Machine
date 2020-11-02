@@ -1,1 +1,0 @@
-web: source svm_scripts/python_env/bin/activate
