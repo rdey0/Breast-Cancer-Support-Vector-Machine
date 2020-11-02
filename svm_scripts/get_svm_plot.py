@@ -1,9 +1,11 @@
+import sklearn
 from sklearn import svm
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import warnings
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 import sys
 import os
