@@ -66,7 +66,7 @@ class App extends React.Component {
       redirect: 'follow'
     };
     this.setState({graph_loading: true});
-    fetch('https://cancer-classifier.herokuapp.com/graph', request_params)
+    fetch('http://localhost:3005/graph', request_params)
       .then(res => {
         return res.blob();
       })

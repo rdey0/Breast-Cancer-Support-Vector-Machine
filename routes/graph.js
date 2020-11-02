@@ -15,7 +15,7 @@ router.post("/", (req, res, next)=>{
   const options = {
       args:[x1_label, x2_label, degree, cost],
       scriptPath: './svm_scripts',
-      pythonPath: __dirname + '/../svm_scripts/python_env/bin/python'
+      pythonPath: __dirname + '/../svm_scripts/python_env/bin/python3'
   };
 
   PythonShell.run(get_graph, options, (err, results)=>{
