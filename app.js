@@ -40,6 +40,7 @@ app.use('/users', usersRouter);
 app.use('/graph', graphRouter);
  
 /*
+//remove functionality for now
 app.post("/optimize_graph", (req, res, next)=>{ 
   const optimize_graph = 'get_optimal_svm_plot.py'
   var x1_label = req.body.x_var;
